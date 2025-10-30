@@ -9,6 +9,8 @@ export class AppController {
   getSum(@Query('a') a: string, @Query('b') b: string): string {
     const numA = parseFloat(a);
     const numB = parseFloat(b);
+
+    // Validate inputs
     if (isNaN(numA) || isNaN(numB)) {
       return 'Invalid numbers provided.';
     }

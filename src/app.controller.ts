@@ -10,7 +10,7 @@ export class AppController {
     const numA = parseFloat(a);
     const numB = parseFloat(b);
 
-    // Validate inputs
+    // Validate inputss
     if (isNaN(numA) || isNaN(numB)) {
       return 'Invalid numbers provided.';
     }

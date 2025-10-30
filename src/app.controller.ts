@@ -1,12 +1,17 @@
-import { Controller, Get } from '@nestjs/common';
-import { AppService } from './app.service';
+import { Controller, Get, Query } from '@nestjs/common';
+import { CalculateService } from './app.service';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor(private readonly appService: CalculateService) {}
 
   @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  getSum(@Query('a') a: string, @Query('b') b: string): string {
+    const numA = parseFloat(a);
+    const numB = parseFloat(b);
+    if (isNaN(numA) || isNaN(numB)) {
+      return 'Invalid numbers provided.';
+    }
+    return this.appService.sum(numA, numB).toString();
   }
 }
